@@ -17,7 +17,7 @@ def add_one_task(title):
 
 def print_list():
     # your code here
-    print(todos)
+    #print(todos)
     if todos != []:
         print("\nThe items currently in memory")
         count = 1
@@ -31,10 +31,12 @@ def print_list():
 def delete_task(number_to_delete):
     # your code here
     for things in range(len(todos)):
-        if int(number_to_delete) == (int(things)-1):
+        #print(f"things = {things}")
+        if (int(number_to_delete)-1) == (int(things)):
             #print(things)
-            #print(todos[int(number_to_delete)-1])
-            del todos[int(number_to_delete)-1]
+            #print(todos[int(number_to_delete)])
+            print("Deleting from local memory...")
+            del todos[int(things)]
     pass
 
 def initialize_todos():
@@ -58,7 +60,7 @@ def initialize_todos():
     
 def save_todos():
     # your code here
-    print(todos)
+    #print(todos)
     temp = json.dumps(todos)
     #print(temp)
     r = requests.put(url = 'https://assets.breatheco.de/apis/fake/todos/user/johnrohan@mail.com', headers = {"Content-Type":"application/json"}, data = temp)
